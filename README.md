@@ -5,4 +5,15 @@
 
 
 
-Tool to crack .zip folder
+
+
+
+
+# Installation
+git clone https://github.com/BioXsec/Dictionary-Brute-Force.git
+cd ZipCracker
+python3 main.py
+
+
+
+
