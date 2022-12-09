@@ -1,7 +1,8 @@
 # Dictionary-Brute-Force
 
 
-![yesdaddy](https://user-images.githubusercontent.com/96635023/206752775-e4aa11b8-86cc-4f57-938d-9dc43e6d1a41.PNG)
+![yesdaddy](https://user-images.githubusercontent.com/96635023/206753493-e1978e59-a2a8-4126-a37b-1533d7a8df72.PNG)
+
 
 
 
@@ -11,7 +12,9 @@
 
 # Installation
 git clone https://github.com/BioXsec/Dictionary-Brute-Force.git
+
 cd ZipCracker
+
 python3 main.py
 
 
