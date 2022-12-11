@@ -1,9 +1,10 @@
 import time, zipfile
 from colorama import Fore
+import os
+from colored import fg, bg, attr
 
 
-
-print('\033[31m' + '''
+print('''
                       :::!~!!!!!:.
                   .xUHWH!! !!?M88WHX:.
                 .X*#M@$!!  !X!M$$$$$$WWx:.
@@ -32,33 +33,48 @@ $R@i.~~ !     :   ~$$$$$B$$en:``
 
 print('[ Initializing program ]')
 
-file_path = input('\033[0;34m' + '''[+] Enter Zip File Path : ''')
-file_path = file_path.replace(' ', '')
-
-word_list = input('\033[0;34m' + '''[+] Enter Wordlist Path : ''') or './password.txt'
-word_list = word_list.replace(' ', '')
 
 
-z_file = zipfile.ZipFile(file_path)
+zipName = input("[+] Enter Zip File Path : ") or './usr/share/wordlists/rockyou.txt'
+pwdsFile = input("[+] Enter Wordlist Path : ")
 
 
-print('\033[0;34m' + '''[+] Brute Force Initiating ...''')
+
+
+
+print('''[+] Brute Force Initiating ...''')
 time.sleep(3)
-print('\033[0;34m' + '''[+] Checking For Correct Password ...''')
+print('''[+] Checking For Correct Password ...''')
 
 
-def dirattack():
-    password = None
-    with open(word_list, 'r') as f:
-        for line in f.readlines():
-            password = line.strip('\n')
-            try:
-                z_file.extractall(pwd=password)
-                password = 'Password found: %s' % password
-            except:
-                pass
-    print("Password:" + password)
+if os.path.exists(zipName):
+    if os.path.exists(pwdsFile):
+        with open(pwdsFile,'rb') as text:
+            for entry in text.readlines():
+                password = entry.strip()
+                with zipfile.ZipFile(zipName,'r') as zf:
+                    try:
+                        zf.extractall(pwd=password)
+
+                        print("[+] Password Found!\n" + attr("reset"))
+
+                        data = zf.namelist()[0]
+                        print("Data: " + str(data))
+
+                        data_size = zf.getinfo(data).file_size
+                        print("Data Size: " + str(data_size))
+
+                        print("Password: " + password.decode("utf-8"))
+
+                        break
+                    except:
+                        print("[-] Password Not Found! - " + password.decode("utf-8"))
+                    pass
+    else:
+        print("[-] Password File Not Found!")
+else:
+    print("[-] Zip File Not Found!")
 
 
-if __name__ == '__main__':
-    dirattack()
+input()
+
