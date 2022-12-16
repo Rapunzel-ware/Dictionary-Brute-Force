@@ -1,8 +1,10 @@
-import time, zipfile
-from colorama import Fore
+import zipfile
 import os
 from colored import fg, bg, attr
 
+
+green = fg("green")
+red = fg("red")
 
 print('''
                       :::!~!!!!!:.
@@ -31,7 +33,6 @@ $R@i.~~ !     :   ~$$$$$B$$en:``
 
 
 
-print('[ Initializing program ]')
 
 
 
@@ -39,12 +40,6 @@ zipName = input("[+] Enter Zip File Path : ") or './usr/share/wordlists/rockyou.
 pwdsFile = input("[+] Enter Wordlist Path : ")
 
 
-
-
-
-print('''[+] Brute Force Initiating ...''')
-time.sleep(3)
-print('''[+] Checking For Correct Password ...''')
 
 
 if os.path.exists(zipName):
@@ -56,7 +51,7 @@ if os.path.exists(zipName):
                     try:
                         zf.extractall(pwd=password)
 
-                        print("[+] Password Found!\n" + attr("reset"))
+                        print( green + "\n[+] Password Found!\n" + attr("reset"))
 
                         data = zf.namelist()[0]
                         print("Data: " + str(data))
@@ -68,13 +63,12 @@ if os.path.exists(zipName):
 
                         break
                     except:
-                        print("[-] Password Not Found! - " + password.decode("utf-8"))
+                        print(red + "[-] Password Not Found! - " + password.decode("utf-8"))
                     pass
     else:
-        print("[-] Password File Not Found!")
+        print(red + "[-] Password File Not Found!")
 else:
-    print("[-] Zip File Not Found!")
+    print(red + "[-] Zip File Not Found!")
 
 
 input()
-
