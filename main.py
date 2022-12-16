@@ -28,7 +28,7 @@ Wi.~!X$?!-~    : ?$$$B$Wu("**$RM!
 $R@i.~~ !     :   ~$$$$$B$$en:``
 ?MXT@Wx.~    :     ~"##*$$$$M~
 
---~~BioXsec Bruteforce Tool~~ ->	https://github.com/BioXsec
+--~~Rapunzel's Bruteforce Tool~~ ->	https://github.com/Rapunzel-ware
 ''')
 
 
